@@ -1,5 +1,6 @@
 package com.tecraa.sayhi.ui.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tecraa.sayhi.databinding.FragmentUserBinding;
 import com.tecraa.sayhi.ui.User;
 import com.tecraa.sayhi.ui.UserAdapter;
+import com.tecraa.sayhi.ui.activities.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,9 @@ public class UserFragment extends Fragment {
     DatabaseReference databaseReference;
     List<User> userList;
 
+    ProgressDialog progressDialog;
+
+
 
 
 
@@ -43,6 +48,10 @@ public class UserFragment extends Fragment {
         binding= FragmentUserBinding.inflate(inflater, container, false);
 
         userList = new ArrayList<>();
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("user");
 
@@ -59,6 +68,7 @@ public class UserFragment extends Fragment {
 
                 UserAdapter adapter = new UserAdapter(getContext(),userList);
                 binding.userListRV.setAdapter(adapter);
+                progressDialog.dismiss();
 
             }
 

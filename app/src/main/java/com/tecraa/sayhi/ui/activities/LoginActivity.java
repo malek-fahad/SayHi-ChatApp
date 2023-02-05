@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("Please wait...");
 
-        getSupportActionBar().hide();
+
 
         binding.registrationTV.setOnClickListener(v->{
             startActivity(new Intent(LoginActivity.this, SingUpActivity.class));

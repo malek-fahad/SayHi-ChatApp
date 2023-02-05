@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        getSupportActionBar().hide();
+
 
         Glide.with(SplashActivity.this).load(R.drawable.img_placholder_smilemonkey).into(binding.test);
 

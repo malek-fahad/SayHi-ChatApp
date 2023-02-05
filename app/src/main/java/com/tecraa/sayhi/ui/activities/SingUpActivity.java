@@ -42,7 +42,7 @@ public class SingUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait...");
         databaseReference = FirebaseDatabase.getInstance().getReference("user");
 
-        getSupportActionBar().hide();
+
 
         binding.loginTV.setOnClickListener(v-> {
             startActivity(new Intent(SingUpActivity.this,LoginActivity.class));
