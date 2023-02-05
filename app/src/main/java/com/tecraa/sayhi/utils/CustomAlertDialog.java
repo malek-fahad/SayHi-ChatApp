@@ -1,20 +1,17 @@
-package com.tecraa.sayhi;
+package com.tecraa.sayhi.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-public class Utils {
+import com.tecraa.sayhi.R;
+
+public class CustomAlertDialog {
 
     public static void showAlert(Context context,String message,Integer icon){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

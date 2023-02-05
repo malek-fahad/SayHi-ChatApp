@@ -1,6 +1,6 @@
 package com.tecraa.sayhi.ui.activities;
 
-import static com.tecraa.sayhi.Utils.showAlert;
+import static com.tecraa.sayhi.utils.CustomAlertDialog.showAlert;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
