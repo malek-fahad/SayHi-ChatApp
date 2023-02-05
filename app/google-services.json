@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732074665171",
+    "project_id": "sayhi-8f35c",
+    "storage_bucket": "sayhi-8f35c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732074665171:android:76f5384b81d03117192026",
+        "android_client_info": {
+          "package_name": "com.tecraa.sayhi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732074665171-4v45tjns7o3n7riekhj4aia1jpuag17u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB3vV1LtGx8jtz7gpWBzyBio_FgMgWp2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732074665171-4v45tjns7o3n7riekhj4aia1jpuag17u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
