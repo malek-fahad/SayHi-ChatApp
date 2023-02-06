@@ -93,9 +93,11 @@ public class SingUpActivity extends AppCompatActivity {
                         userMap.put("userEmail",email);
                         userMap.put("userPhone",phoneNumber);
                         userMap.put("userId",userId);
+                        userMap.put("profileImage","img");
+                        userMap.put("coverImage","img");
                         databaseReference.child(userId).setValue(userMap).addOnSuccessListener(unused -> {
                             progressDialog.dismiss();
-                            startActivity(new Intent(SingUpActivity.this,MainActivity.class));
+                            startActivity(new Intent(SingUpActivity.this,ProfileUpdateActivity.class));
                             finish();
                         }).addOnFailureListener(e -> {
                             progressDialog.dismiss();

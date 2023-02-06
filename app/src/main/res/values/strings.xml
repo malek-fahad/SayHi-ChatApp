@@ -17,4 +17,5 @@
     <string name="time">05:45 pm</string>
     <string name="one">1</string>
     <string name="logout">Logout</string>
+    <string name="update_profile">Update Profile</string>
 </resources>

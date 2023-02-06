@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.tecraa.sayhi.R;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
         User user = userList.get(position);
 
         holder.chatProfileName.setText(user.getUserName());
+        Glide.with(context).load(user.getProfileImage()).placeholder(R.drawable.img_profile_male_avater).into(holder.chatProfileImg);
 
     }
 

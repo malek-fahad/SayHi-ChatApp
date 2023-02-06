@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.ProfileFragment">
+    tools:context=".ui.activities.ProfileUpdateActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skip"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"/>
 
 
     <ImageView
-        android:id="@+id/userProfileCoverImage"
+        android:id="@+id/updateProfileCoverImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/img_profile_cover"
@@ -18,16 +26,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/userProfileCoverImageUpdateBtn"
+        android:id="@+id/updateProfileCoverImageBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/camera"
-        app:layout_constraintEnd_toEndOf="@id/userProfileCoverImage"
-        app:layout_constraintTop_toTopOf="@id/userProfileCoverImage"/>
+        app:layout_constraintEnd_toEndOf="@id/updateProfileCoverImage"
+        app:layout_constraintTop_toTopOf="@id/updateProfileCoverImage"/>
+
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/userProfileImgCV"
+        android:id="@+id/updateProfileImgCV"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:cardCornerRadius="150dp"
@@ -36,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="100dp">
         <ImageView
-            android:id="@+id/userProfileImage"
+            android:id="@+id/updateProfileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img_profile_male_avater"/>
@@ -47,35 +56,33 @@
         android:layout_height="40dp"
         app:cardCornerRadius="40dp"
         app:cardBackgroundColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/userProfileImgCV"
-        app:layout_constraintEnd_toEndOf="@id/userProfileImgCV"
-        app:layout_constraintTop_toTopOf="@id/userProfileImgCV"
-        app:layout_constraintBottom_toBottomOf="@id/userProfileImgCV"
+        app:layout_constraintStart_toStartOf="@id/updateProfileImgCV"
+        app:layout_constraintEnd_toEndOf="@id/updateProfileImgCV"
+        app:layout_constraintTop_toTopOf="@id/updateProfileImgCV"
+        app:layout_constraintBottom_toBottomOf="@id/updateProfileImgCV"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintVertical_bias="0.95">
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/userProfileImageUpdateBtn"
+            android:id="@+id/updateProfileImageBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/camera"
-            app:layout_constraintEnd_toEndOf="@id/userProfileImgCV"
-            app:layout_constraintBottom_toBottomOf="@id/userProfileImgCV"/>
+            android:background="@drawable/camera"/>
     </androidx.cardview.widget.CardView>
 
 
-    <TextView
-        android:id="@+id/userProfileNameTV"
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profileInfoUpdateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/full_name"
-        android:textColor="@color/black"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:background="@color/purple_700"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:text="@string/update_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userProfileImgCV"
-        android:layout_margin="20dp"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="20dp"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

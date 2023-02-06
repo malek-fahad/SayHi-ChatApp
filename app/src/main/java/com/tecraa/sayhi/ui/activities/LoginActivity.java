@@ -14,8 +14,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tecraa.sayhi.R;
 import com.tecraa.sayhi.databinding.ActivityLoginBinding;
+import com.tecraa.sayhi.ui.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -71,9 +77,30 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        progressDialog.dismiss();
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                        finish();
+
+                        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                        FirebaseDatabase.getInstance().getReference("user").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                User user = snapshot.getValue(User.class);
+                                progressDialog.dismiss();
+                                if (user.getProfileImage().equals("img")){
+                                    startActivity(new Intent(LoginActivity.this,ProfileUpdateActivity.class));
+                                    finish();
+                                }else {
+                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                    finish();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     }
 
                 }
