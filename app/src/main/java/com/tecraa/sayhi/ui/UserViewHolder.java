@@ -11,18 +11,14 @@ import com.tecraa.sayhi.R;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView chatProfileImg;
-    public TextView chatProfileName;
-    TextView chatLastMessage;
-    TextView chatLastTime;
-    TextView chatUnreadMessageCount;
+    ImageView contactProfileImg,contactMassageIcon;
+    public TextView contactProfileName,contactLastMessage;;
 
     public UserViewHolder(@NonNull View itemView) {
         super(itemView);
-        chatProfileImg = itemView.findViewById(R.id.chatProfileImg);
-        chatProfileName = itemView.findViewById(R.id.chatProfileName);
-        chatLastMessage = itemView.findViewById(R.id.chatLastMessage);
-        chatLastTime = itemView.findViewById(R.id.chatLastTime);
-        chatUnreadMessageCount = itemView.findViewById(R.id.chatUnreadMessageCount);
+        contactProfileImg = itemView.findViewById(R.id.contactProfileImg);
+        contactMassageIcon = itemView.findViewById(R.id.contactMassageIcon);
+        contactProfileName = itemView.findViewById(R.id.contactProfileName);
+        contactLastMessage = itemView.findViewById(R.id.contactLastMessage);
     }
 }
