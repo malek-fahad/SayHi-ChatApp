@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tecraa.sayhi.R;
 import com.tecraa.sayhi.databinding.FragmentProfileBinding;
-import com.tecraa.sayhi.ui.User;
+import com.tecraa.sayhi.model.User;
 
 
 public class ProfileFragment extends Fragment {
@@ -54,7 +53,7 @@ public class ProfileFragment extends Fragment {
                 User user = snapshot.getValue(User.class);
                 binding.userProfileNameTV.setText(user.getUserName());
 
-                Glide.with(getContext()).load(user.getProfileImage()).placeholder(R.drawable.img_profile_male_avater).into(binding.userProfileImage);
+                Glide.with(getContext()).load(user.getProfileImage()).placeholder(R.drawable.img_profile_male_avatar).into(binding.userProfileImage);
 
             }
 

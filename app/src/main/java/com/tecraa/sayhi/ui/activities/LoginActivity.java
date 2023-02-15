@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tecraa.sayhi.R;
 import com.tecraa.sayhi.databinding.ActivityLoginBinding;
-import com.tecraa.sayhi.ui.User;
+import com.tecraa.sayhi.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 

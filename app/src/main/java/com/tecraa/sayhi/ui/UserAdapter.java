@@ -1,7 +1,6 @@
 package com.tecraa.sayhi.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.tecraa.sayhi.R;
-import com.tecraa.sayhi.ui.activities.ChatActivity;
+import com.tecraa.sayhi.model.User;
 import com.tecraa.sayhi.utils.UserListener;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
 
         holder.contactProfileName.setText(userList.get(position).getUserName());
-        Glide.with(context).load(userList.get(position).getProfileImage()).placeholder(R.drawable.img_profile_male_avater).into(holder.contactProfileImg);
+        Glide.with(context).load(userList.get(position).getProfileImage()).placeholder(R.drawable.img_profile_male_avatar).into(holder.contactProfileImg);
 
         holder.contactMassageIcon.setOnClickListener(v->{
             userListener.ItemClick(userList.get(position));

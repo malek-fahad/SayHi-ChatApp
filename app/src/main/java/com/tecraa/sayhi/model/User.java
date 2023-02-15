@@ -1,4 +1,4 @@
-package com.tecraa.sayhi.ui;
+package com.tecraa.sayhi.model;
 
 public class User {
     String userName,userEmail,userPhone,userId,profileImage,coverImage;

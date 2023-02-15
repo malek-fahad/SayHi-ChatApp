@@ -21,7 +21,7 @@
         android:id="@+id/userProfileCoverImageUpdateBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/camera"
+        android:background="@drawable/ic_camera_bg"
         app:layout_constraintEnd_toEndOf="@id/userProfileCoverImage"
         app:layout_constraintTop_toTopOf="@id/userProfileCoverImage"/>
 
@@ -39,7 +39,7 @@
             android:id="@+id/userProfileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/img_profile_male_avater"/>
+            android:src="@drawable/img_profile_male_avatar"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -57,7 +57,7 @@
             android:id="@+id/userProfileImageUpdateBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/camera"
+            android:background="@drawable/ic_camera_bg"
             app:layout_constraintEnd_toEndOf="@id/userProfileImgCV"
             app:layout_constraintBottom_toBottomOf="@id/userProfileImgCV"/>
     </androidx.cardview.widget.CardView>

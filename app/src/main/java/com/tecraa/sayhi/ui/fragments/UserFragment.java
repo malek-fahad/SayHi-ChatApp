@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tecraa.sayhi.databinding.FragmentUserBinding;
-import com.tecraa.sayhi.ui.User;
+import com.tecraa.sayhi.model.User;
 import com.tecraa.sayhi.ui.UserAdapter;
 import com.tecraa.sayhi.ui.activities.ChatActivity;
 import com.tecraa.sayhi.utils.UserListener;
@@ -88,13 +87,6 @@ public class UserFragment extends Fragment implements UserListener {
 
             }
         });
-
-
-
-
-
-
-
 
         return binding.getRoot();
     }

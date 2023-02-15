@@ -6,6 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.ChatActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/chat_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/chatInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+
+
+    <Button
+        android:id="@+id/imageSend"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_round_image_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chatInput"
+        app:layout_constraintTop_toTopOf="@id/chatInput"
+        app:layout_constraintBottom_toBottomOf="@id/chatInput"
+        android:layout_marginStart="10dp"/>
+
+
+    <EditText
+        android:id="@+id/chatInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="150dp"
+        android:background="@drawable/chat_input_ui"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="@string/message"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/imageSend"
+        app:layout_constraintEnd_toStartOf="@id/sendBtn"
+        app:layout_constraintTop_toBottomOf="@id/chatList"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_send_24"
+        app:layout_constraintStart_toEndOf="@id/chatInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/chatInput"
+        app:layout_constraintBottom_toBottomOf="@id/chatInput"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

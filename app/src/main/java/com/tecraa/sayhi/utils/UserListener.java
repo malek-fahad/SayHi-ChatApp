@@ -1,6 +1,6 @@
 package com.tecraa.sayhi.utils;
 
-import com.tecraa.sayhi.ui.User;
+import com.tecraa.sayhi.model.User;
 
 public interface UserListener {
 
