@@ -1,17 +1,21 @@
 package com.tecraa.sayhi.ui.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Adapter;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,6 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.tecraa.sayhi.ChatAdapter;
 import com.tecraa.sayhi.R;
 import com.tecraa.sayhi.databinding.ActivityChatBinding;
@@ -34,12 +41,14 @@ public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     Intent intent;
     DatabaseReference databaseReference;
+    StorageReference storageReference;
     Toolbar toolbar;
     String remoteUserId;
 
     FirebaseUser firebaseUser;
 
     List<Chat> chatList;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference("chat");
 
         intent = getIntent();
         remoteUserId = intent.getStringExtra("userID");
@@ -83,6 +93,14 @@ public class ChatActivity extends AppCompatActivity {
 
         });
 
+        binding.imageSend.setOnClickListener(v -> {
+            ImagePicker.with(this)
+                    .crop()	    			//Crop image(Optional), Check Customization for more option
+                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                    .start(1000);
+        });
+
     }
 
     private void getAllChat() {
@@ -97,7 +115,7 @@ public class ChatActivity extends AppCompatActivity {
                         chatList.add(chat);
                     }
                 }
-                ChatAdapter adapter = new ChatAdapter(chatList,firebaseUser.getUid());
+                ChatAdapter adapter = new ChatAdapter(ChatActivity.this,chatList,firebaseUser.getUid());
                 binding.chatList.setAdapter(adapter);
 
             }
@@ -144,7 +162,49 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
 
 
+        if (requestCode==1000 && resultCode == Activity.RESULT_OK){
+            imageUri = data.getData();
+            sendImageDatabase(imageUri);
 
+        }
+
+    }
+
+    private void sendImageDatabase(Uri imageUri) {
+        String messageId = databaseReference.push().getKey();
+
+        StorageReference uploadRef = storageReference.child("SayHi-"+firebaseUser.getUid()+messageId);
+        uploadRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+                if (task.isSuccessful()){
+                    uploadRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+
+                            String senderId = firebaseUser.getUid();
+                            String receiverId = remoteUserId;
+                            String message = String.valueOf(uri);
+                            String messageType = "img";
+                            String messageSeen = "1";
+
+                            sendMessage(senderId,receiverId,message,messageId,messageType,messageSeen);
+
+
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+    }
 }
