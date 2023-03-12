@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -90,6 +91,7 @@ public class ChatActivity extends AppCompatActivity {
             String messageSeen = "1";
 
             sendMessage(senderId,receiverId,message,messageId,messageType,messageSeen);
+            binding.chatInput.setText("");
 
         });
 
@@ -117,6 +119,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 ChatAdapter adapter = new ChatAdapter(ChatActivity.this,chatList,firebaseUser.getUid());
                 binding.chatList.setAdapter(adapter);
+                binding.progressbar.setVisibility(View.GONE);
 
             }
 
@@ -136,7 +139,6 @@ public class ChatActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(ChatActivity.this, "send", Toast.LENGTH_SHORT).show();
-                    binding.chatInput.setText("");
                 }
             }
         });
